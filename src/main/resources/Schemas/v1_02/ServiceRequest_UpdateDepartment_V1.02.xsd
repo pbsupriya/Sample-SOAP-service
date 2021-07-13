@@ -1,0 +1,22 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath/IDM" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02" xmlns="http://www.universityofcalifornia.edu/UCPath/IDM" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="Department_V1.02.xsd"/>
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="CommonEnumerations_V1.02.xsd"/>
+
+   <xs:element name="DepartmentList">
+    	<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element name="DepartmentListRecord" type="DepartmentListType"/>
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+    
+	<xs:complexType name="DepartmentListType">
+		<xs:sequence>
+			<xs:element name="CorrelationId" type="ucpath:CorrelationId" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Source" type="ucpath:Source" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DepartmentRecord" type="ucpath:UCPathDepartmentType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

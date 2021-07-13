@@ -1,0 +1,25 @@
+<!-- 
+	07/23/2018
+		Mukund Gidadhubli
+			PMO-3540: I-280 WSDL requires the Date of Birth filed to contain a valid date.  When PeopleSoft is sending a blank date it violates the WSDL requirement and cause I-280 to fail.
+	        Defect#10255: I280 (IDM - Person and Contingent Worker) - WSDL requires the Date of Birth filed to contain a valid date. When PeopleSoft is sending a blank date it violates the WSDL requirement and cause I-280 to fail.
+	        Changes Made to this XSD
+	        	1. Created a new version of ../v1_02/PersonIdentifier_V1.02.xsd i.e., ../v1_03/PersonIdentifier_V1.03.xsd
+	            2. Replaced ../v1_02/PersonIdentifier_V1.02.xsd with ../v1_03/PersonIdentifier_V1.03.xsd
+	            3. Replaced Job_V1.03.xsd with ../v1_03/Job_V1.03.xsd due to the folder structure
+ -->
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath/FileNet" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.universityofcalifornia.edu/UCPath/FileNet" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+        <xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_03/Job_V1.03.xsd"/>
+        <xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_02/Name_V1.02.xsd"/>
+        <xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_03/PersonIdentifier_V1.03.xsd"/>
+<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_02/ServiceResponse_V1.02.xsd"/>
+        <xs:element name="FileNetResponse" type="FileNetResponseType"/>
+        <xs:complexType name="FileNetResponseType">
+                <xs:sequence>
+                        <xs:element name="PersonIdentifier" type="ucpath:UCPathPersonIdentifierType" minOccurs="1" maxOccurs="1" nillable="false"/>
+                        <xs:element name="Name" type="ucpath:UCPathNameType" minOccurs="1" maxOccurs="1" nillable="false"/>
+                        <xs:element name="Job" type="ucpath:UCPathJobType" minOccurs="1" maxOccurs="1" nillable="false"/>
+                       <xs:element name="ServiceResponse" type="ucpath:UCPathServiceResponseType" minOccurs="1" maxOccurs="1" nillable="false"/>
+                </xs:sequence>
+        </xs:complexType>
+</xs:schema>

@@ -1,0 +1,51 @@
+<!-- 
+	07/23/2018
+		Mukund Gidadhubli
+			PMO-3540: I-280 WSDL requires the Date of Birth filed to contain a valid date.  When PeopleSoft is sending a blank date it violates the WSDL requirement and cause I-280 to fail.
+	        Defect#10255: I280 (IDM - Person and Contingent Worker) - WSDL requires the Date of Birth filed to contain a valid date. When PeopleSoft is sending a blank date it violates the WSDL requirement and cause I-280 to fail.
+	        Changes Made to this XSD
+	            1. Replaced "../../Schemas/v1_03/ServiceResponse_FileNet_V1.03.xsd" with "../../Schemas/v1_04/ServiceResponse_FileNet_V1.04.xsd"
+ -->
+<wsdl:definitions name="UCFileNetService" targetNamespace="http://www.universityofcalifornia.edu/UCPath/FileNet" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath" xmlns:FileNet="http://www.universityofcalifornia.edu/UCPath/FileNet" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.universityofcalifornia.edu/UCPath/FileNet" schemaLocation="../../Schemas/v1_03/ServiceRequest_FileNet_V1.03.xsd"/>
+    </xsd:schema>
+        <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.universityofcalifornia.edu/UCPath/FileNet" schemaLocation="../../Schemas/v1_04/ServiceResponse_FileNet_V1.04.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  
+  <wsdl:message name="FileNetRequest">
+		<wsdl:part name="request" element="FileNet:FileNetRequest"/>
+	</wsdl:message>
+	<wsdl:message name="FileNetResponse">
+		<wsdl:part name="response" element="FileNet:FileNetResponse"/>
+	</wsdl:message>
+        
+        <wsdl:portType name="UCFileNetServicePort">
+        <wsdl:operation name="UCFileNet">
+        <wsdl:input message="FileNet:FileNetRequest"/>
+        <wsdl:output message="FileNet:FileNetResponse"/>
+        </wsdl:operation>
+        </wsdl:portType>
+        
+        <wsdl:binding name="UCFileNetServiceSOAP" type="FileNet:UCFileNetServicePort">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="UCFileNet">
+<soap:operation soapAction="http://www.universityofcalifornia.edu/UCPath/UCFileNetService/UCFileNet"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+        </wsdl:operation>
+        </wsdl:binding>
+        
+        <wsdl:service name="UCFileNetService">
+        <wsdl:port binding="FileNet:UCFileNetServiceSOAP" name="UCFileNetServiceSOAP">
+        <soap:address location="https://ucsysoacfgpub.universityofcalifornia.edu/uc/FileNetService"/>
+        </wsdl:port>
+        </wsdl:service>
+</wsdl:definitions>

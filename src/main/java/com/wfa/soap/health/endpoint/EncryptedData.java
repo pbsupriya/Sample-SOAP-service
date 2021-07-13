@@ -1,0 +1,16 @@
+package com.wfa.soap.health.endpoint;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(
+        name = "EncryptedData",
+        namespace = "http://www.w3.org/2001/04/xmlenc#"
+)
+public class EncryptedData {
+
+    public EncryptedData() {
+    }
+}

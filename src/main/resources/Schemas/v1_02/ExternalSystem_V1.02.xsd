@@ -1,0 +1,35 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02" xmlns="http://www.universityofcalifornia.edu/UCPath" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:include schemaLocation="CommonEnumerations_V1.02.xsd"/>
+
+	<xs:element name="UCPathExternalSystem" type="UCPathExternalSystemType"/>
+
+	<xs:complexType name="UCPathExternalSystemType">
+		<xs:sequence>
+
+			<xs:element name="BusinessUnit" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ExternalSystem" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="50"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ExternalSystemID" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="256"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="EffectiveDate" type="xs:date" minOccurs="1" nillable="false"/>
+			<xs:element name="EffectiveStatus" type="ucpath:EffectiveStatusEnum" minOccurs="1" nillable="false"/>
+	
+		</xs:sequence>
+		<xs:attribute name="IsChanged" type="xs:boolean" use="optional"/>
+	</xs:complexType>	
+
+</xs:schema>

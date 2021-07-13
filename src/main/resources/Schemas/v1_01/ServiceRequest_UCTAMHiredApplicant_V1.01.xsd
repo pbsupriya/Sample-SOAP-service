@@ -1,0 +1,90 @@
+<xs:schema
+	targetNamespace="http://www.universityofcalifornia.edu/UCPath/IDM/TAM"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.00"
+	xmlns="http://www.universityofcalifornia.edu/UCPath/IDM/TAM"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+
+
+	<xs:element name="UpdateHiredApplicantRequest" type="UpdateHiredApplicantRequestType" />
+
+	<xs:complexType name="UpdateHiredApplicantRequestType">
+		<xs:sequence>
+			<xs:element name="CorrelationId" type="xs:string"
+				minOccurs="1" maxOccurs="1" />
+			<xs:element name="Source" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="BusinessUnit" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="5" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ApplicantID" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="15" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="FirstName" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MiddleName" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LastName" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SSN" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DOB" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:date"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PositionNum" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="8" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ApplicantEmailID" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="70" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DeptId" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

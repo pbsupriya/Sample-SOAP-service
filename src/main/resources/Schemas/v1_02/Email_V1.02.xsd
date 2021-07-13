@@ -1,0 +1,28 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02" xmlns="http://www.universityofcalifornia.edu/UCPath" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:include schemaLocation="CommonEnumerations_V1.02.xsd"/>
+
+	<xs:element name="UCPathEmail" type="UCPathEmailType"/>
+	
+	<xs:complexType name="UCPathEmailType">
+		<xs:sequence>
+		
+			<xs:element name="EmailType" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="4"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="EmailAddress" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="70"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="EmailPrefFlag" type="ucpath:YNEnum" minOccurs="1" nillable="false"/>		
+			
+		</xs:sequence>
+		<xs:attribute name="IsChanged" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+		
+</xs:schema>

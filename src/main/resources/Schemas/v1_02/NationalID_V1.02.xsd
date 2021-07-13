@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.universityofcalifornia.edu/UCPath" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.universityofcalifornia.edu/UCPath" 
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+
+    <xs:element name="UCPathNationalID" type="UCPathNationalIDType" />
+
+	<xs:complexType name="UCPathNationalIDType">
+		<xs:sequence>
+		
+			<xs:element name="NationalIDType" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="NationalID" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="20" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="CountryCode" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="NationalIDComplete" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+		</xs:sequence>
+		<xs:attribute name="IsChanged" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	
+</xs:schema>

@@ -1,0 +1,19 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath/hr" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.03" xmlns="http://www.universityofcalifornia.edu/UCPath/hr" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_02/PersonJob_V1.02.xsd"/>
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="Benefits_V1.03.xsd"/>
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_02/CommonEnumerations_V1.02.xsd"/>
+	
+   	<xs:element name="UpdatePersonJobBenefitsRequest" type="UpdatePersonJobBenefitsRequestType"/>
+    
+	<xs:complexType name="UpdatePersonJobBenefitsRequestType">
+		<xs:sequence>
+			<xs:element name="CorrelationId" type="ucpath:CorrelationId" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Source" type="ucpath:Source" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PersonJob" type="ucpath:UCPathPersonJobType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Benefits" type="ucpath:UCPathBenefitsType" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="RetryCount" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>	
+	
+</xs:schema>

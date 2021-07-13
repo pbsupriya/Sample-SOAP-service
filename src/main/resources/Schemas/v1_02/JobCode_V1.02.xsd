@@ -1,0 +1,290 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02" xmlns="http://www.universityofcalifornia.edu/UCPath" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:include schemaLocation="CommonEnumerations_V1.02.xsd"/>
+	
+    <xs:element name="UCPathJobCode" type="UCPathJobCodeType"/>
+
+	<xs:complexType name="UCPathJobCodeType">
+		<xs:sequence>
+		
+			<xs:element name="JobCode" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="JobSubFunc" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Desc" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="30"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="DescLong" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="60"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="DescShort" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+	
+			<xs:element name="USSocCD" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+	
+			<xs:element name="USOccCD" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+
+			<xs:element name="Company" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+	
+			<xs:element name="SetId" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+	
+			<xs:element name="SetIdSalary" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+
+			<xs:element name="RegRegion" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+	
+			<xs:element name="JobFamily" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+	
+			<xs:element name="JobFunction" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+
+			<xs:element name="LaborAgreement" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="ManagerLevel" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="2"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="EGGroup" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="EGAcademicRank" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+	
+			<xs:element name="TrnProgram" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+	
+			<xs:element name="BargUnit" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="4"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+	
+			<xs:element name="CompFrequency" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+
+			<xs:element name="WorkerCompCode" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="4"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="UnionCode" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="EEOJobGroup" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="4"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="EncumbSalaryOption" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="Grade" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="SalaryAdminPlan" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="4"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="SalaryRangeCurrency" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="SalaryRangeFreq" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="SalaryRangeMaxRate" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="SalaryRangeMidRate" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="SalaryRangeMinRate" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="StdHours" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="StdHrsFrequency" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="JobAccntabPct" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="JobAccntabPoints" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="JobPointsTotal" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="JobProbSlvPct" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="JobProbSlvPoints" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="Step" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="EncubSalAmt" type="xs:double" minOccurs="0" nillable="true"/>
+
+			<xs:element name="EEO1Code" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="EEO4Code" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="EEO5Code" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="2"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="EEO6Code" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="DirectlyTipped" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="AvailTeleWork" type="ucpath:YNEnum" minOccurs="1" nillable="false"/>		
+
+			<xs:element name="EncumIndc" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="FLSAStatus" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="IpedssCode" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+	
+			<xs:element name="KeyJobCode" type="ucpath:YNEnum" minOccurs="1" nillable="false"/>		
+			
+			<xs:element name="MedChkupReq" type="ucpath:YNEnum" minOccurs="1" nillable="false"/>		
+
+			<xs:element name="PosnMgmtInd" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="RegTemp" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="LastUpdOprId" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="30"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>	
+
+			<xs:element name="LastUpdateDate" type="xs:date" minOccurs="1" nillable="false"/>
+				
+			<xs:element name="LastUpdateDtm" type="xs:dateTime" minOccurs="1" nillable="false"/>			
+
+			<xs:element name="EffectiveDate" type="xs:date" minOccurs="1" nillable="false"/>
+			
+			<xs:element name="EffectiveStatus" type="ucpath:EffectiveStatusEnum" minOccurs="1" nillable="false"/>
+			
+		</xs:sequence>
+		<xs:attribute name="IsChanged" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+
+</xs:schema>

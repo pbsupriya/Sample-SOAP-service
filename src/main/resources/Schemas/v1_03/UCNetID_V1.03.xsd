@@ -1,0 +1,80 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.03" xmlns="http://www.universityofcalifornia.edu/UCPath" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:include schemaLocation="../v1_02/CommonEnumerations_V1.02.xsd"/>
+
+  	<xs:element name="UCPathUCNetID" type="UCPathUCNetIDType"/>
+
+	<xs:complexType name="UCPathUCNetIDType">
+		<xs:sequence>
+		
+			<xs:element name="RowId" type="xs:int" minOccurs="1" nillable="false"/>
+			
+			<xs:element name="SSN" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="9"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+	
+			<xs:element name="EmplId" type="ucpath:EmplId" minOccurs="1" nillable="false"/>
+		
+			<xs:element name="UcNetId" type="ucpath:UcNetId" minOccurs="0" nillable="true"/>
+			
+			<xs:element name="DOB" type="xs:date" minOccurs="0" nillable="true"/>
+
+			<xs:element name="First" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="30"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Last" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="30"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Middle" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="30"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Suffix" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="15"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="HcmBusUnit" type="ucpath:HcmBusUnitType" nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+
+			<xs:element name="LocationInfo" type="ucpath:LocationInfoType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			
+		</xs:sequence>		
+	</xs:complexType>
+	
+	<xs:complexType name="HcmBusUnitType">
+		<xs:sequence>					
+			<xs:element name="HcmBusUnitCode" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+		</xs:sequence>		
+	</xs:complexType>
+
+	<xs:complexType name="LocationInfoType">
+		<xs:sequence>					
+			<xs:element name="HcmBusUnitCode" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LocCodeNo" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>				
+		</xs:sequence>		
+	</xs:complexType>	
+
+</xs:schema>

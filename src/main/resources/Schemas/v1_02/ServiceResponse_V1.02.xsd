@@ -1,0 +1,35 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02" xmlns="http://www.universityofcalifornia.edu/UCPath" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:include schemaLocation="CommonEnumerations_V1.02.xsd"/>
+
+   <xs:element name="UCPathServiceResponse" type="UCPathServiceResponseType"/>
+
+	<xs:complexType name="UCPathServiceResponseType">
+		<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:element name="ResponseCode" type="ucpath:SvcResponseCodeEnum" nillable="false"/>
+			<xs:element name="CorrelationId" type="ucpath:CorrelationId" nillable="true"/>
+			
+			<xs:element name="MsgCode" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="20"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="MsgDec" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="256"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="MsgDescDetails" minOccurs="0" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="2048"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Retry" type="xs:boolean" minOccurs="0" nillable="true"/>			
+				
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

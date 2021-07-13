@@ -1,0 +1,73 @@
+<!-- 
+	This WSDL implements the following CEMLIs
+		I606b(UpsertEmployeeDetails)
+	
+	Changes:
+	04/24/2017 - PMO-2590 - SOA - I606b - Add fault message to the WSDL
+ -->
+ <wsdl:definitions name="UCAysoService"
+	targetNamespace="http://www.universityofcalifornia.edu/UCPath/AYSO"
+	xmlns:ayso="http://www.universityofcalifornia.edu/UCPath/AYSO"
+	xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath" 
+	xmlns:ucpfault="http://www.universityofcalifornia.edu/UCPath/UCPathFault" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.universityofcalifornia.edu/UCPath/AYSO"
+				schemaLocation="../../Schemas/v1_03/AYSOServiceRequest_UpsertEmployeeDetails_V1.03.xsd" />
+			<import namespace="http://www.universityofcalifornia.edu/UCPath"
+				schemaLocation="../../Schemas/v1_02/ServiceResponse_V1.02.xsd" />
+			<import namespace="http://www.universityofcalifornia.edu/UCPath/UCPathFault"
+				schemaLocation="../../Schemas/v1_03/UCPathFault.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="EmployeeDetailsRequest">
+		<wsdl:part name="request" element="ayso:UpsertEmployeeDetailsRequest" />
+	</wsdl:message>
+	<wsdl:message name="EmployeeDetailsResponse">
+		<wsdl:part name="response" element="ucpath:UCPathServiceResponse" />
+	</wsdl:message>
+	<wsdl:message name="UCPathFault">
+		<wsdl:part name="fault" element="ucpfault:UCPathFault" />
+	</wsdl:message>
+
+	<wsdl:portType name="UCAysoServicePort">
+		<wsdl:operation name="UpsertEmployeeDetails">
+			<wsdl:input message="ayso:EmployeeDetailsRequest" />
+			<wsdl:output message="ayso:EmployeeDetailsResponse" />
+			<wsdl:fault name="fault" message="ayso:UCPathFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="UCAysoServiceSOAP" type="ayso:UCAysoServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="UpsertEmployeeDetails">
+			<soap:operation
+				soapAction="http://www.universityofcalifornia.edu/UCPath/AYSO/UCAysoService/UpsertEmployeeDetails" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+          		<soap:fault name="fault" use="literal"/>
+      		</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="UCAysoService">
+		<wsdl:port binding="ayso:UCAysoServiceSOAP" name="UCAysoServiceSOAP">
+			<soap:address location="http://localhost:9081/UCPath/AYSO/UCAysoService" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

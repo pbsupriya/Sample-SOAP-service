@@ -1,0 +1,25 @@
+<!-- 
+	03/02/2018
+		Mukund Gidadhubli
+			PMO-3540: I-280 WSDL requires the Date of Birth filed to contain a valid date.  When PeopleSoft is sending a blank date it violates the WSDL requirement and cause I-280 to fail.
+	        Defect#10255: I280 (IDM - Person and Contingent Worker) - WSDL requires the Date of Birth filed to contain a valid date. When PeopleSoft is sending a blank date it violates the WSDL requirement and cause I-280 to fail.
+	        Changes Made to this XSD
+	        	1. Created a new version of ../v1_03/ServiceRequest_UpdatePersonJob_V1.03.xsd i.e., ServiceRequest_UpdatePersonJob_V1.04.xsd
+	            2. Replaced ../v1_02/PersonJob_V1.02.xsd with ../v1_03/PersonJob_V1.03.xsd
+ -->
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath/IDM" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.03" xmlns="http://www.universityofcalifornia.edu/UCPath/IDM" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_03/PersonJob_V1.03.xsd"/>
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_02/CommonEnumerations_V1.02.xsd"/>
+	
+   	<xs:element name="UpdatePersonJobRequest" type="UpdatePersonJobRequestType"/>
+    
+	<xs:complexType name="UpdatePersonJobRequestType">
+		<xs:sequence>
+			<xs:element name="CorrelationId" type="ucpath:CorrelationId" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Source" type="ucpath:Source" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PersonJobList" type="ucpath:UCPathPersonJobType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>	
+	
+</xs:schema>

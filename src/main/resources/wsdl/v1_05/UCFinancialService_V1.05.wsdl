@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This WSDL implements the following CEMLIs I370(ValidateComboCode) 
+
+
+Changes: 
+	04/24/2017 - WSDL version to 1.04 PMO-2589 - SOA - I370 - Add fault message 
+				 to the WSDL Uncommented the policy references 
+	
+	
+	04/30/2019 - WSDL version to 1.05 
+			   - PMO-3592: Requirement is to add a new Effective date field to the request message.
+			   - Change request XSD reference from ../../Schemas/v1_03/ServiceRequest_ValidateComboCode_V1.03.xsd 
+				 to ../../Schemas/v1_04/ServiceRequest_ValidateComboCode_V1.04.xsd 
+-->
+<wsdl:definitions name="UCFinancialService"
+	targetNamespace="http://www.universityofcalifornia.edu/UCPath/FS"
+	xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath" 
+  xmlns:ucpfault="http://www.universityofcalifornia.edu/UCPath/UCPathFault"
+	xmlns:fs="http://www.universityofcalifornia.edu/UCPath/FS"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+	xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.universityofcalifornia.edu/UCPath/FS"
+				schemaLocation="../../Schemas/v1_04/ServiceRequest_ValidateComboCode_V1.04.xsd" />
+		</xsd:schema>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.universityofcalifornia.edu/UCPath/FS"
+				schemaLocation="../../Schemas/v1_03/ServiceResponse_ValidateComboCode_V1.03.xsd" />
+		</xsd:schema>
+     <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+       <import namespace="http://www.universityofcalifornia.edu/UCPath/UCPathFault" schemaLocation="../../Schemas/v1_03/UCPathFault.xsd"/>
+      </xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="ValidateComboCodeRequest">
+		<wsdl:part name="request" element="fs:ValidateComboCodeRequest" />
+	</wsdl:message>
+	<wsdl:message name="ValidateComboCodeResponse">
+		<wsdl:part name="response" element="fs:ValidateComboCodeResponse" />
+	</wsdl:message>
+  <wsdl:message name="UCPathFault">
+<wsdl:part name="fault" element="ucpfault:UCPathFault"/>
+</wsdl:message>
+
+	<wsdl:portType name="UCFinancialServicePort">
+		<wsdl:operation name="ValidateComboCode">
+			<wsdl:input message="fs:ValidateComboCodeRequest" />
+			<wsdl:output message="fs:ValidateComboCodeResponse" />
+      <wsdl:fault name="fault" message="fs:UCPathFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="UCFinancialServiceSOAP" type="fs:UCFinancialServicePort">
+		<soap:binding style="document"	transport="http://schemas.xmlsoap.org/soap/http" />
+    
+    
+		<wsp:PolicyReference URI="#UCPathService_Msg_Protection_Policy" wsdl:required="false"/>
+		
+		<wsdl:operation name="ValidateComboCode">
+			<soap:operation
+				soapAction="http://www.universityofcalifornia.edu/UCPath/UCFinancialService/ValidateComboCode" />
+			<wsdl:input>
+				<soap:body use="literal" />
+        
+        
+				<wsp:PolicyReference URI="#UCPathService_SOAP_Input_Policy" wsdl:required="false"/>
+        
+        
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+        
+				<wsp:PolicyReference URI="#UCPathService_SOAP_Output_Policy" wsdl:required="false"/>
+        
+			</wsdl:output>
+      <wsdl:fault name="fault">
+<soap:fault name="fault" use="literal"/>
+</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsp:Policy wsu:Id="UCPathService_SOAP_Input_Policy">
+		<sp:SignedParts>
+			<sp:Body />
+			<sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+			<sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+			<sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+		</sp:SignedParts>
+		<sp:EncryptedParts>
+			<sp:Body />
+			<sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+		</sp:EncryptedParts>
+	</wsp:Policy>
+
+	<wsp:Policy wsu:Id="UCPathService_SOAP_Output_Policy">
+		<sp:SignedParts>
+			<sp:Body />
+		</sp:SignedParts>
+		<sp:EncryptedParts>
+			<sp:Body />
+		</sp:EncryptedParts>
+	</wsp:Policy>
+
+	<wsp:Policy wsu:Id="UCPathService_Msg_Protection_Policy">
+		<sp:AsymmetricBinding>
+			<wsp:Policy>
+
+				<sp:InitiatorToken>
+					<wsp:Policy>
+						<sp:X509Token
+							sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+							<wsp:Policy>
+								<sp:WssX509V3Token10 />
+							</wsp:Policy>
+						</sp:X509Token>
+					</wsp:Policy>
+				</sp:InitiatorToken>
+
+				<sp:RecipientToken>
+					<wsp:Policy>
+						<sp:X509Token
+							sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+							<wsp:Policy>
+								<sp:WssX509V3Token10 />
+							</wsp:Policy>
+						</sp:X509Token>
+					</wsp:Policy>
+				</sp:RecipientToken>
+
+				<sp:AlgorithmSuite>
+					<wsp:Policy>
+						<sp:Basic128 />
+					</wsp:Policy>
+				</sp:AlgorithmSuite>
+
+				<sp:Layout>
+					<wsp:Policy>
+						<sp:Lax />
+					</wsp:Policy>
+				</sp:Layout>
+
+				<sp:IncludeTimestamp />
+				<sp:OnlySignEntireHeadersAndBody />
+			</wsp:Policy>
+		</sp:AsymmetricBinding>
+
+		<sp:Wss10>
+			<wsp:Policy />
+		</sp:Wss10>
+	</wsp:Policy>
+
+	<wsdl:service name="UCFinancialService">
+		<wsdl:port binding="fs:UCFinancialServiceSOAP" name="UCFinancialServiceSOAP">
+			<soap:address location="http://localhost:9081/UCPath/UCFinancialService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

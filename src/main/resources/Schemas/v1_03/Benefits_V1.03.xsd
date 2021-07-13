@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.universityofcalifornia.edu/UCPath" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.universityofcalifornia.edu/UCPath" 
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+
+    <xs:element name="UCPathBenefits" type="UCPathBenefitsType" />
+    
+	<xs:complexType name="UCPathBenefitsType">
+		<xs:sequence>
+		
+			<xs:element name="CoverageSelect" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="RetirementBenefitPlan" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="RetirementBenefitPlanDescription" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="100" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DirectDepositDistribution" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="1" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AnnualBaseCode" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="100" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="EventStatus" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="100" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BasParticOptn" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="4000" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="IsChanged" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+
+</xs:schema>

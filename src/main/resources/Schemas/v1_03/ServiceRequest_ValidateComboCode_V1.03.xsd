@@ -1,0 +1,15 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath/FS" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02" xmlns="http://www.universityofcalifornia.edu/UCPath/FS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_02/ComboCode_V1.02.xsd"/>
+	<xs:import namespace="http://www.universityofcalifornia.edu/UCPath" schemaLocation="../v1_02/CommonEnumerations_V1.02.xsd"/>
+
+	<xs:element name="ValidateComboCodeRequest" type="ValidateComboCodeRequestType"/>
+
+	<xs:complexType name="ValidateComboCodeRequestType">
+		<xs:sequence>
+			<xs:element name="CorrelationId" type="ucpath:CorrelationId" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Source" type="ucpath:Source" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ComboCodeList" type="ucpath:UCPathComboCodeType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,60 @@
+<xs:schema targetNamespace="http://www.universityofcalifornia.edu/UCPath" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02" xmlns="http://www.universityofcalifornia.edu/UCPath" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath">
+
+	<xs:include schemaLocation="CommonEnumerations_V1.02.xsd"/>
+
+  	<xs:element name="UCPathCustomUCID" type="UCPathCustomUCIDType"/>
+  	
+  	<xs:complexType name="UCPathCustomUCIDType">
+		<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:element name="EmplId" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="11"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>			
+			<xs:element name="ExternalSystems" type="ExtSystemType" minOccurs="0" maxOccurs="unbounded" nillable="false"/>		
+			<xs:element name="EmailAddress" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="70"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>		
+			<xs:element name="Phone" type="UCPathPhoneType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ExtSystemType">
+		<xs:sequence>
+			<xs:element name="ExternalSystemName" minOccurs="1" maxOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="50"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>			
+			<xs:element name="ExternalSystemVal" minOccurs="1" maxOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="256"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UCPathPhoneType">
+		<xs:sequence>
+			<xs:element name="PhoneType" minOccurs="1" nillable="false" default="BUSN">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+      					<xs:enumeration value="BUSN"/>
+      				</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CountryCode" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="3"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PhoneNumber" minOccurs="1" maxOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="24"/></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.universityofcalifornia.edu/UCPath" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.universityofcalifornia.edu/UCPath" 
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+
+
+   <xs:element name="UCPathComboCode" type="UCPathComboCodeType" />
+
+	<xs:complexType name="UCPathComboCodeType">
+		<xs:sequence>
+
+			<xs:element name="RowId" type="xs:int" minOccurs="1" nillable="false" />
+		
+			<xs:element name="SetId" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+	
+			<xs:element name="Account" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+	
+			<xs:element name="FundCode" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		
+			<xs:element name="DeptId" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ProjectId" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="15" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Class" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Product" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="6" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ProgramCode" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="BudgetRef" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="8" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+						
+			<xs:element name="ChartFld1" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ChartFld2" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ChartFld3" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Affiliate" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="OperatingUnit" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="8" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="AltAcct" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="AffiliateIntra1" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="AffiliateIntra2" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="10" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="BusinessUnitPc" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="ActivityId" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="15" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ResourceType" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ResourceCategory" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ResourceSubCat" minOccurs="1" nillable="false">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"><xs:maxLength value="5" /></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

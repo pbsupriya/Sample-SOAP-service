@@ -1,0 +1,162 @@
+<!-- 
+	IDM locations use this WSDL to implement operations related to Hired Applicant.
+	There will be more operations that will be added as and when required.
+	
+	Changes: 04/04/2019 - Initial WSDL version to 1.00 
+	Changes: 02/11/2021 - https://tntjira.ucop.edu/browse/UCP-101138
+	                      MuleSoft development Task to include JobDepartmentID in XML sent to locations
+						  WSDL version to 1.01
+			              Updated ServiceRequest_UCTAMHiredApplicant_V1.00.xsd to ServiceRequest_UCTAMHiredApplicant_V1.01.xsd
+-->
+<wsdl:definitions name="UCIDMTAMService"
+	targetNamespace="http://www.universityofcalifornia.edu/UCPath/IDM/TAM"
+	xmlns:idmtam="http://www.universityofcalifornia.edu/UCPath/IDM/TAM"
+	xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath"
+	xmlns:ucpfault="http://www.universityofcalifornia.edu/UCPath/UCPathFault"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.universityofcalifornia.edu/UCPath/IDM/TAM"
+				schemaLocation="../Schemas/ServiceRequest_UCTAMHiredApplicant_V1.01.xsd" />
+		</xsd:schema>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.universityofcalifornia.edu/UCPath"
+				schemaLocation="../Schemas/ServiceResponse_V1.02.xsd" />
+		</xsd:schema>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.universityofcalifornia.edu/UCPath/UCPathFault"
+				schemaLocation="../Schemas/UCPathFault.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="HiredApplicantRequest">
+		<wsdl:part name="request" element="idmtam:UpdateHiredApplicantRequest" />
+	</wsdl:message>
+	<wsdl:message name="HiredApplicantResponse">
+		<wsdl:part name="response" element="ucpath:UCPathServiceResponse" />
+	</wsdl:message>
+	<wsdl:message name="UCPathFault">
+		<wsdl:part name="fault" element="ucpfault:UCPathFault" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="UCIDMTAMServicePort">
+		<wsdl:operation name="UpdateHiredApplicant">
+			<wsdl:input message="idmtam:HiredApplicantRequest" />
+			<wsdl:output message="idmtam:HiredApplicantResponse" />
+			<wsdl:fault name="fault" message="idmtam:UCPathFault" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="UCIDMTAMServiceSOAP" type="idmtam:UCIDMTAMServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsp:PolicyReference URI="#UCPathService_Msg_Protection_Policy" wsdl:required="false"/>
+
+		<wsdl:operation name="UpdateHiredApplicant">
+			<soap:operation
+				soapAction="http://www.universityofcalifornia.edu/UCPath/IDM/TAM/UCIDMTAMService/UpdateHiredApplicant" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<wsp:PolicyReference URI="#UCPathService_SOAP_Input_Policy" wsdl:required="false"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+				<wsp:PolicyReference URI="#UCPathService_SOAP_Output_Policy" wsdl:required="false"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsp:Policy wsu:Id="UCPathService_SOAP_Input_Policy">
+		<sp:SignedParts>
+			<sp:Body />
+			<sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+			<sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+			<sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+		</sp:SignedParts>
+		<sp:EncryptedParts>
+			<sp:Body />
+			<sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+		</sp:EncryptedParts>
+	</wsp:Policy>
+
+	<wsp:Policy wsu:Id="UCPathService_SOAP_Output_Policy">
+		<sp:SignedParts>
+			<sp:Body />
+		</sp:SignedParts>
+		<sp:EncryptedParts>
+			<sp:Body />
+		</sp:EncryptedParts>
+	</wsp:Policy>
+
+	<wsp:Policy wsu:Id="UCPathService_SOAP_Fault_Policy">
+		<sp:SignedParts>
+			<sp:Body />
+		</sp:SignedParts>
+		<sp:EncryptedParts>
+			<sp:Body />
+		</sp:EncryptedParts>
+	</wsp:Policy>
+
+	<wsp:Policy wsu:Id="UCPathService_Msg_Protection_Policy">
+		<sp:AsymmetricBinding>
+			<wsp:Policy>
+
+				<sp:InitiatorToken>
+					<wsp:Policy>
+						<sp:X509Token
+							sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+							<wsp:Policy>
+								<sp:WssX509V3Token10 />
+							</wsp:Policy>
+						</sp:X509Token>
+					</wsp:Policy>
+				</sp:InitiatorToken>
+
+				<sp:RecipientToken>
+					<wsp:Policy>
+						<sp:X509Token
+							sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+							<wsp:Policy>
+								<sp:WssX509V3Token10 />
+							</wsp:Policy>
+						</sp:X509Token>
+					</wsp:Policy>
+				</sp:RecipientToken>
+
+				<sp:AlgorithmSuite>
+					<wsp:Policy>
+						<sp:Basic128 />
+					</wsp:Policy>
+				</sp:AlgorithmSuite>
+
+				<sp:Layout>
+					<wsp:Policy>
+						<sp:Lax />
+					</wsp:Policy>
+				</sp:Layout>
+
+				<sp:IncludeTimestamp />
+				<sp:OnlySignEntireHeadersAndBody />
+			</wsp:Policy>
+		</sp:AsymmetricBinding>
+
+		<sp:Wss10>
+			<wsp:Policy />
+		</sp:Wss10>
+	</wsp:Policy>
+
+	<wsdl:service name="UCIDMTAMService">
+		<wsdl:port binding="idmtam:UCIDMTAMServiceSOAP" name="UCIDMTAMServiceSOAP">
+			<soap:address location="http://localhost:9081/UCPath/IDM/TAM/UCIDMTAMService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.universityofcalifornia.edu/UCPath" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.universityofcalifornia.edu/UCPath" 
+xmlns:ucpath="http://www.universityofcalifornia.edu/UCPath" 
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+
+	<xs:simpleType name="CorrelationId" >
+		<xs:restriction base="xs:string"><xs:maxLength value="36" /></xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="UcNetId" >
+		<xs:restriction base="xs:string"><xs:maxLength value="7" /></xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="EmplId" >
+		<xs:restriction base="xs:string"><xs:maxLength value="8" /></xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Source" >
+		<xs:restriction base="xs:string"><xs:maxLength value="30" /></xs:restriction>
+	</xs:simpleType>
+		
+	<xs:simpleType name="BuCodeEnum">
+ 		<xs:restriction base="xs:string">		
+			<xs:enumeration value="ASLA1"/>
+			<xs:enumeration value="BKCMP"/>
+			<xs:enumeration value="DVCMP"/>
+			<xs:enumeration value="DVMED"/>
+			<xs:enumeration value="HACMP"/>
+			<xs:enumeration value="IRCMP"/>
+			<xs:enumeration value="IRMED"/> 
+			<xs:enumeration value="LACMP"/> 
+			<xs:enumeration value="LAMED"/> 
+			<xs:enumeration value="MECMP"/> 
+			<xs:enumeration value="RVCMP"/>
+			<xs:enumeration value="SBCMP"/> 
+			<xs:enumeration value="SCCMP"/> 
+			<xs:enumeration value="SDCMP"/> 
+			<xs:enumeration value="SDMED"/>
+			<xs:enumeration value="SFCMP"/>
+			<xs:enumeration value="SFMED"/>
+			<xs:enumeration value="UCFIN"/>
+			<xs:enumeration value="UCOP1"/>
+			<xs:enumeration value="UCSHR"/>		
+		</xs:restriction>
+	</xs:simpleType> 
+
+	<xs:simpleType name="ValidEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="V"/>
+			<xs:enumeration value="I"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="UCNetIDMatch">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="D"/>		
+			<xs:enumeration value="E"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="YNEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="EffectiveStatusEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="I"/>
+		</xs:restriction>
+	</xs:simpleType>
+ 
+ 	<xs:simpleType name="CountryCodeEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="USA"/>
+		</xs:restriction>
+	</xs:simpleType>
+ 
+	<xs:simpleType name="GenderEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="U"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="SvcResponseCodeEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUCCESS"/>
+			<xs:enumeration value="ERROR"/>
+			<xs:enumeration value="WARNING"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="FaultTypesEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="APPLICATION"/>
+			<xs:enumeration value="SYSTEM"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DurationTypesEnum">
+ 		<xs:restriction base="xs:string">
+			<xs:enumeration value="YEARS"/>
+			<xs:enumeration value="MONTHS"/>
+			<xs:enumeration value="DAYS"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
