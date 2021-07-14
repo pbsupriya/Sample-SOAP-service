@@ -118,7 +118,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 		<wsp:PolicyReference URI="#UCPathService_Msg_Protection_Policy" wsdl:required="false"/>
 
 		<wsdl:operation name="UpdatePersonJob">
-			<soap:operation soapAction="http://www.universityofcalifornia.edu/UCPath/IDM/UCIDMService/UpdatePersonJob"/>
+			<soap:operation soapAction="http://www.universityofcalifornia.edu/UCPath/IDM/UCIDMService/UpdateobPersonJob"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 				<wsp:PolicyReference URI="#UCPathService_SOAP_Input_Policy" wsdl:required="false"/>
